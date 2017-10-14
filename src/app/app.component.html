@@ -2,5 +2,8 @@
 
 <div>
   <p>Hello, {{ currentUser.username }}!</p>
-  <p>Your e-mail address is <em>{{ currentUser.email }}</em></p>
+  <p [hidden]="hideEmail">Your e-mail address is <em>{{ currentUser.email }}</em></p>
+  <button (click)="toggle()">Toggle(click)</button>
 </div>
+
+<button (mouseleave)="toggle()">Toggle(mouseleave)</button>
