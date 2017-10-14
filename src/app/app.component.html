@@ -6,4 +6,18 @@
   <button (click)="toggle()">Toggle(click)</button>
 </div>
 
-<button (mouseleave)="toggle()">Toggle(mouseleave)</button>
+<div>
+  <input type="text" #a>
+  <p>Value of input is: {{ a.value }}</p>
+</div>
+
+<div>
+  <input type="text" #b (keyup)="0">
+  <p>Value of input is: {{ b.value }}</p>
+</div>
+
+<div>
+  <h3>Change email:</h3>
+  <input type="text" name="name" #newMail>
+  <button (click)="changeMail(newMail.value)">Change</button>
+</div>
