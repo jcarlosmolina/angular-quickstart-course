@@ -21,3 +21,15 @@
   <input type="text" name="name" #newMail>
   <button (click)="changeMail(newMail.value)">Change</button>
 </div>
+
+<div>
+  <h3>Change email:</h3>
+  <input type="text" #newMail2 (keyup)="keyPress($event)">
+  <button (click)="changeMail(newMail2.value)">Change</button>
+</div>
+
+<div>
+  <h3>Change email:</h3>
+  <input type="text" #newMail3 (keyup.enter)="changeMail(newMail3.value)">
+  <button (click)="changeMail(newMail3.value)">Change</button>
+</div>
