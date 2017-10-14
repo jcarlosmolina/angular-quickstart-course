@@ -5,24 +5,21 @@ import { Component } from '@angular/core';
   templateUrl: 'app/app.component.html'
 })
 export class AppComponent  {
-  private currentUser:User = { username: "JC", email: "jc@example.com" };
+  private currentUser:User = { username: "JC", email: "jc@example.com" }
 
-  private hideEmail:boolean = false;
+  private hideEmail:boolean = false
 
   private toggle() {
     this.hideEmail = !this.hideEmail;
   }
 
-  private changeMail(newMail:string) {
-    this.currentUser.email = newMail;
-  }
-
-  private keyPress(event:KeyboardEvent) {
-    if(event.keyCode == 13) {
-      var inputElement = <HTMLInputElement>event.target;
-      this.changeMail(inputElement.value);
-    }
-  }
+  private users:Array<User> = [
+    { username: "User1", email: "user1@example.com" },
+    { username: "User2", email: "user2@example.com" },
+    { username: "User3", email: "user3@example.com" },
+    { username: "User4", email: "user4@example.com" },
+    { username: "User5", email: "user5@example.com" }
+  ]
 
 }
 
