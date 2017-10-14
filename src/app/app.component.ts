@@ -2,6 +2,20 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  templateUrl: 'app/app.component.html'
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent  {
+  private currentUser:User = { username: "JC", email: "jc@example.com" };
+
+  private hideEmail:boolean = false;
+
+  private toggle() {
+    this.hideEmail = !this.hideEmail;
+  }
+
+}
+
+interface User {
+  username:string,
+  email:string
+}
