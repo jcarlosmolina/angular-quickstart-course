@@ -1,0 +1,18 @@
+.info {
+  background-color: #A1DBF0;
+  padding: 10px 24px;
+  margin: 8px;
+  color: black;
+  text-align: center;
+}
+
+.acc {
+  background-color: #BBBBBB;
+  padding: 10px 24px;
+  margin: 8px;
+  color: black;
+}
+
+.acc > * {
+  margin: 4px;
+}
