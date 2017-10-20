@@ -1,13 +1,34 @@
-<h1>My First Angular4 Application </h1>
+<h1>Personal Finance</h1>
 
 <div>
-  <p>Hello, {{ currentUser.username }}!</p>
-  <p *ngIf="!hideEmail">Your e-mail address is <em>{{ currentUser.email }}</em></p>
-  <button (click)="toggle()">Toggle(click)</button>
+  <h2>Your accounts</h2>
+  <div *ngIf="_accounts.legth == 0">You don't have any account yet. You can add one now.</div>
+
+  <div *ngFor="let acc of _accounts; let i = index">
+    <h2>{{acc.title}} ({{acc.id}})</h2>
+    <p>{{acc.description}}</p>
+    <p>Balance: <strong>{{acc.balance}}</strong></p>
+    <button (click)="removeAcc(i)">Delete</button>
+  </div>
 </div>
 
-<ul>
-  <li *ngFor="let user of users; let i = index">
-    ({{i+1}}){{user.username}} - <em>{{user.email}}</em>
-  </li>
-</ul>
+<div>
+  <div>
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="title" value="" #title>
+  </div>
+
+  <div>
+    <label for="desc">Description:</label>
+    <input id="desc" type="text" name="desc" value="" #desc>
+  </div>
+
+  <div>
+    <label for="bal">Balance:</label>
+    <input id="bal" type="number" name="bal" value="0" #balance>
+  </div>
+
+  <div>
+    <button (click)="createAcc(title, desc, balance)">Create</button>
+  </div>
+</div>
