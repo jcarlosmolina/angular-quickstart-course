@@ -7,6 +7,7 @@ import { Account } from './account.model';
   styleUrls: ['app/app.component.css']
 })
 export class AppComponent  {
+  private _selected:Array<boolean> = [false, false];
   private _accounts:Array<Account> = [
     {
       id: 1,
@@ -21,6 +22,7 @@ export class AppComponent  {
 
   private createAcc(titleEl:any, descEl:any, balEl:any){
     this._accounts.push(new Account(this._nextId, titleEl.value, descEl.value, balEl.value));
+    this._selected.push(false);
     this._nextId++;
 
     titleEl.value = "";
@@ -30,5 +32,12 @@ export class AppComponent  {
 
   private removeAcc(index:number) {
     this._accounts.splice(index, 1);
+    this._selected.splice(index, 1);
   }
+
+
+  private select(index:number) {
+    this._selected[index] = !this._selected[index];
+  }
+
 }
