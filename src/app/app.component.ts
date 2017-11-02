@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Account } from './account.model';
+import { Component }   from '@angular/core';
+import { Account }     from './account/account.model';
+import { AccountsList } from './account/accounts_list.component';
 
 @Component({
   selector: 'my-app',
