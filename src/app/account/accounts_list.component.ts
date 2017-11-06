@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Account} from './account.model';
 
 @Component({
@@ -11,8 +11,10 @@ export class AccountsList {
   @Input('accounts')
   private _accounts:Array<Account>;
 
-  private removeAcc(index:number) {
-    this._accounts.splice(index, 1);
-  }
+  @Output('delete')
+  private delete = new EventEmitter<Number>();
 
+  private _remove(index:number) {
+    this.delete.emit(index);
+  }
 }

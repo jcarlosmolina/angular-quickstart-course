@@ -3,7 +3,7 @@
 
   <h2>Your accounts</h2>
 
-  <accounts-list [accounts]="_accounts"></accounts-list>
+  <accounts-list [accounts]="_accounts" (delete)="removeAcc($event)"></accounts-list>
 
   <div class="row">
     <form class="col-md-6 col-sm-9">

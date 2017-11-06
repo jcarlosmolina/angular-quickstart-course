@@ -40,4 +40,7 @@ export class AppComponent  {
     balEl.value = 0;
   }
 
+  private removeAcc(index:number) {
+    this._accounts.splice(index, 1);
+  }
 }
