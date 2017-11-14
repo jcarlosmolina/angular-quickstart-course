@@ -8,4 +8,16 @@ import { Account } from './account.model';
 })
 export class AccountForm {
 
+  @Output('created') created = new EventEmitter<Account>();
+
+  private createAcc(titleEl:any, descEl:any, balEl:any){
+
+    var newAccount:Account = new Account(0, titleEl.value, descEl.value, balEl.value);
+    this.created.emit(newAccount);
+
+    titleEl.value = "";
+    descEl.value = "";
+    balEl.value = 0;
+  }
+
 }

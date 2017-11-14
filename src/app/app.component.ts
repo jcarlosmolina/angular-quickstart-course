@@ -1,6 +1,7 @@
 import { Component }   from '@angular/core';
 import { Account }     from './account/account.model';
 import { AccountsList } from './account/accounts_list.component';
+import { AccountForm } from './account/account_form.component';
 
 @Component({
   selector: 'my-app',
@@ -27,17 +28,9 @@ export class AppComponent  {
 
   private _nextId = 3;
 
-  private createAcc(titleEl:any, descEl:any, balEl:any){
-
-    alert('Not yet implemented');
-
-    // this._accounts.push(new Account(this._nextId, titleEl.value, descEl.value, balEl.value));
-    // this._selected.push(false);
-    // this._nextId++;
-
-    titleEl.value = "";
-    descEl.value = "";
-    balEl.value = 0;
+  private createAcc(newAccount: Account) {
+    newAccount.id = this._nextId++;
+    this._accounts.push(newAccount);
   }
 
   private removeAcc(index:number) {
