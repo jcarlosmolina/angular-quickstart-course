@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Account } from './account.model';
 
 @Component({
@@ -15,9 +15,13 @@ export class AccountForm {
     var newAccount:Account = new Account(0, titleEl.value, descEl.value, balEl.value);
     this.created.emit(newAccount);
 
-    titleEl.value = "";
-    descEl.value = "";
-    balEl.value = 0;
   }
 
+  @Input('error') error:string;
+
+  @ViewChild('form') form: ElementRef;
+
+  public resetForm() {
+    this.form.nativeElement.reset();
+  }
 }

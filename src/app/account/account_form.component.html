@@ -1,6 +1,10 @@
 <div class="row">
-  <form class="col-md-6 col-sm-9">
+  <form class="col-md-6 col-sm-9" #form>
     <h3>Add new account</h3>
+
+    <div *ngIf="error">
+      <div class="alert alert-danger"><strong>Creation error!</strong> {{error}}</div>
+    </div>
 
     <div class="form-group">
       <label for="title">Title:</label>
