@@ -2,13 +2,13 @@ import { Component, ViewChild, Injector }   from '@angular/core';
 import { Account        } from './account/account.model';
 import { AccountsList   } from './account/accounts_list.component';
 import { AccountForm    } from './account/account_form.component';
-import { AccountService } from './account/account.services';
+import { AccountService, ACCOUNT_SERVICE_PROVIDERS } from './account/account.services';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css'],
-  providers: [ AccountService ]
+  providers: [ ACCOUNT_SERVICE_PROVIDERS ]
 })
 export class AppComponent  {
 
