@@ -12,24 +12,29 @@ import { AccountService, ACCOUNT_SERVICE_PROVIDERS } from './account/account.ser
 })
 export class AppComponent  {
 
-  private _accounts:Array<Account>;
+  private _accounts:Array<Account> = [];
 
   private _accountService:AccountService;
 
   constructor(accountService: AccountService) {
     this._accountService = accountService;
-    this._accounts = this._accountService.getAll();
+    var promise = this._accountService.getAll();
+    promise.then(accounts => this._accounts = accounts);
   }
 
   private createAccError:string = "";
 
   private createAcc(newAccount: Account) {
-    this._accountService.create(newAccount);
-    this.form.resetForm();
+    this._accountService.create(newAccount)
+      .then(account => {
+          this.createAccError = "";
+          this.form.resetForm();
+      })
+      .catch(errMsg => this.createAccError = errMsg);
   }
 
   private removeAcc(index:number) {
-    this._accountService.remove(index);
+    this._accountService.remove(index).then(account => console.log(account));
   }
 
   @ViewChild(AccountForm) form:AccountForm;

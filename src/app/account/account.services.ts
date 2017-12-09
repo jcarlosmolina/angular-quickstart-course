@@ -22,26 +22,35 @@ export class AccountService {
     }
   ];
 
-  public getAll():Array<Account> {
-    return this._accounts;
+  public getAll():Promise<Array<Account>> {
+    return Promise.resolve(this._accounts);
   };
 
   private _nextId:number = 3;
+  private _accountLimit:number = 3;
 
   public create(newAccount:Account){
-    newAccount.id = this._nextId++;
+    return new Promise((resolve, reject) => {
+      if (this._accounts.length >= this._accountLimit){
+        reject("Maximum accounts limit reached.");
+      } else {
+        newAccount.id = this._nextId++;
 
-    if (this._logger)
-      this._logger.log('Account created: ' + newAccount.title);
+        if (this._logger)
+          this._logger.log('Account created: ' + newAccount.title);
 
-    this._accounts.push(newAccount);
+        this._accounts.push(newAccount);
+        resolve(newAccount);
+      }
+    });
   };
 
   public remove(index:number){
     if (this._logger)
       this._logger.log('Account deleted: ' + this._accounts[index].title);
-
+    var account2Delete = this._accounts[index];
     this._accounts.splice(index, 1);
+    return Promise.resolve(account2Delete);
   };
 
 }
